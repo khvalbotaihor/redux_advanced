@@ -3,17 +3,18 @@ import { connect } from 'react-redux';
 
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
-import * as actionTypes from '../../store/actions/actions';
+import {increment, decrement, add, substract, store_result, delete_result } from '../../store/actions/actions';
+
 
 class Counter extends Component {
     render () {
         return (
             <div>
                 <CounterOutput value={this.props.ctr} />
-                <CounterControl label="Increment" clicked={this.props.onIncrementCounter} />
-                <CounterControl label="Decrement" clicked={this.props.onDecrementCounter}  />
-                <CounterControl label="Add 10" clicked={this.props.onAddCounter}  />
-                <CounterControl label="Subtract 15" clicked={this.props.onSubtractCounter}  />
+                <CounterControl label="Increment" clicked={increment()} />
+                <CounterControl label="Decrement" clicked={decrement()}  />
+                <CounterControl label="Add 10" clicked={add()}  />
+                <CounterControl label="Subtract 15" clicked={substract()}  />
                 <hr />
                 <button onClick={() => this.props.onStoreResult(this.props.ctr)}>Store Result</button>
                 <ul>
