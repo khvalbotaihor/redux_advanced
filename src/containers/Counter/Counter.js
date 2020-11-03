@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
-import {increment, decrement, add, substract, store_result, delete_result } from '../../store/actions/actions';
+import * as actionCreators from '../../store/actions/actions';
 
 
 class Counter extends Component {
@@ -11,10 +11,10 @@ class Counter extends Component {
         return (
             <div>
                 <CounterOutput value={this.props.ctr} />
-                <CounterControl label="Increment" clicked={increment()} />
-                <CounterControl label="Decrement" clicked={decrement()}  />
-                <CounterControl label="Add 10" clicked={add()}  />
-                <CounterControl label="Subtract 15" clicked={substract()}  />
+                <CounterControl label="Increment" clicked={this.props.onIncrementCounter} />
+                <CounterControl label="Decrement" clicked={this.props.onDecrementCounter}  />
+                <CounterControl label="Add 10" clicked={this.props.onAddCounter}  />
+                <CounterControl label="Subtract 15" clicked={this.props.onSubtractCounter}  />
                 <hr />
                 <button onClick={() => this.props.onStoreResult(this.props.ctr)}>Store Result</button>
                 <ul>
@@ -37,12 +37,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIncrementCounter: () => dispatch({type: actionTypes.INCREMENT}),
-        onDecrementCounter: () => dispatch({type: actionTypes.DECREMENT}),
-        onAddCounter: () => dispatch({type: actionTypes.ADD, val: 10}),
-        onSubtractCounter: () => dispatch({type: actionTypes.SUBTRACT, val: 15}),
-        onStoreResult: (result) => dispatch({type: actionTypes.STORE_RESULT, result: result}),
-        onDeleteResult: (id) => dispatch({type: actionTypes.DELETE_RESULT, resultElId: id})
+        onIncrementCounter: () => dispatch(actionCreators.increment()),
+        onDecrementCounter: () => dispatch(actionCreators.decrement()),
+        onAddCounter: () => dispatch(actionCreators.add(10)),
+        onSubtractCounter: () => dispatch(actionCreators.substract(15)),
+        onStoreResult: (result) => dispatch(actionCreators.store_result(result)),
+        onDeleteResult: (id) => dispatch(actionCreators.delete_result(id))
     }
 };
 

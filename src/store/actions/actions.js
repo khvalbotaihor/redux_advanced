@@ -13,26 +13,30 @@ export const increment = () => {
 }
 export const decrement = () => {
     return{
-        type: INCREMENT
+        type: DECREMENT
     }
 }
-export const add = () => {
+export const add = (value) => {
     return{
-        type: INCREMENT
+        type: ADD,
+        val: value
     }
 }
-export const substract = () => {
+export const substract = (value) => {
     return{
-        type: INCREMENT
+        type: SUBTRACT,
+        val: value
     }
 }
-export const store_result = () => {
+export const store_result = (res) => {
     return{
-        type: INCREMENT
+        type: STORE_RESULT,
+        result: res
     }
 }
-export const delete_result = () => {
+export const delete_result = (resElId) => {
     return{
-        type: INCREMENT
+        type: DELETE_RESULT,
+        resultElId:resElId
     }
 }
