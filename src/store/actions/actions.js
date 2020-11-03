@@ -7,36 +7,39 @@ export const DELETE_RESULT = 'DELETE_RESULT';
 
 
 export const increment = () => {
-    return{
+    return {
         type: INCREMENT
     }
 }
 export const decrement = () => {
-    return{
+    return {
         type: DECREMENT
     }
 }
 export const add = (value) => {
-    return{
+    return {
         type: ADD,
         val: value
     }
 }
 export const substract = (value) => {
-    return{
+    return {
         type: SUBTRACT,
         val: value
     }
 }
 export const store_result = (res) => {
-    return{
+    setTimeout(() => {
+
+    }, 2000);
+    return {
         type: STORE_RESULT,
         result: res
     }
 }
 export const delete_result = (resElId) => {
-    return{
+    return {
         type: DELETE_RESULT,
-        resultElId:resElId
+        resultElId: resElId
     }
 }
