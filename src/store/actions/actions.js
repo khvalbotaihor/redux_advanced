@@ -28,10 +28,21 @@ export const substract = (value) => {
         val: value
     }
 }
-export const store_result = (res) => {
-    setTimeout(() => {
 
-    }, 2000);
+export const saveResult = (res) => {
+    return {
+        type: STORE_RESULT,
+        result: res
+    }
+}
+
+export const store_result = (res) => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(saveResult(res))
+        }, 2000);
+    }
+
     return {
         type: STORE_RESULT,
         result: res
